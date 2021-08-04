@@ -9,21 +9,22 @@ import { User } from "./User";
 import { Work } from "./Work";
 
 @Entity()
-export class UserAchievement {
+export class UserWorks {
   @PrimaryColumn()
-  user_id: string;
+  user_id: number;
 
   @PrimaryColumn()
-  achievement_id: number;
+  work_id: number;
 
-  @ManyToOne(() => User, (user) => user.id)
+  @ManyToOne(() => User, (user) => user.id, {
+    onDelete: "CASCADE",
+  })
   @JoinColumn({ name: "user_id" })
   public user!: User;
 
-  @ManyToOne(() => Work, (work) => work.id)
+  @ManyToOne(() => Work, (work) => work.id, {
+    onDelete: "CASCADE",
+  })
   @JoinColumn({ name: "work_id" })
   public work!: Work;
-
-  @CreateDateColumn()
-  created_at: Date;
 }
