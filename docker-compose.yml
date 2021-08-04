@@ -2,6 +2,7 @@ version: "3.5"
 services:
   db:
     image: mysql:5.7.34
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     container_name: mysql-container
     environment:
       MYSQL_DATABASE: "typeorm_db"
