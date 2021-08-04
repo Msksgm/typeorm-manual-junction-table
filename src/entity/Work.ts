@@ -11,7 +11,4 @@ export class Work {
 
   @Column()
   body: string;
-
-  @Column()
-  userId: number;
 }
